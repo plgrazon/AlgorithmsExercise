@@ -1,0 +1,26 @@
+{
+  "name": "AlgorithmsExercise",
+  "version": "1.0.0",
+  "description": "This will contain implementations of different data structures and algorithms.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "live-server",
+    "start:repl": "nodemon dataStructures/linkedlist.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plgrazon/AlgorithmsExercise.git"
+  },
+  "keywords": [],
+  "author": "Paolo Razon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/plgrazon/AlgorithmsExercise/issues"
+  },
+  "homepage": "https://github.com/plgrazon/AlgorithmsExercise#readme",
+  "dependencies": {
+    "live-server": "^1.2.0",
+    "nodemon": "^1.18.3"
+  }
+}

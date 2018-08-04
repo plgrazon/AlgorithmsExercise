@@ -6,12 +6,12 @@ There are two ways to run this app either on the browser console or node console
 
 Node REPL:
 ```
-"start:repl": "nodemon **file name here**"
+"start:repl": "nodemon filename here"
 npm run start:repl
 ```
 
 Browser:
 ```
-src="**folder/filename**"
+src="folder/filename"
 npm start
 ```

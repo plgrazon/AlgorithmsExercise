@@ -36,13 +36,38 @@ class LinkedList {
       this.length += 1;
     }
   }
+
+  reverse(head) {
+    // iteratively
+    // let prev = null;
+    //
+    // while(this.head) {
+    //   const next = this.head.next;
+    //   this.head.next = prev;
+    //   prev = this.head;
+    //   this.head = next;
+    // }
+    //
+    // return prev;
+
+    // recursively
+    if (!head || !head.next) {
+      return head;
+    }
+    const newHead = this.reverse(head.next);
+    head.next.next = head;
+    head.next = null;
+    return newHead;
+  }
 }
 
 const list = new LinkedList(1);
 list.append(2);
 list.append(3);
-list.append(4);
-list.append(5);
+// list.append(4);
+// list.append(5);
 
 // console.log(list);
 printThis(list);
+console.log('==========\n==========');
+printThis(list.reverse(list.head));

@@ -15,59 +15,116 @@ class Node {
 
 class LinkedList {
   constructor(value) {
-    this.head = value ? new Node(value) : null
+    this.head = null;
     this.length = 0;
+    if (value) {
+      this.head = new Node(value);
+      this.length++;
+    }
   }
 
+  // add to head:
+  preppend(value) {
+    const node = new Node(value);
+    node.next = this.head;
+    this.head = node;
+    this.length++;
+  }
+
+  // add to tail:
   append(value) {
     let node = new Node(value);
-    let curr;
-
     if (this.head === null) {
       this.head = node;
     } else {
-      curr = this.head;
-
-      while (curr.next) {
-        curr = curr.next;
+      let curr = this.head;
+      while(curr.next) {
+        head = curr.next;
       }
-
       curr.next = node;
-      this.length += 1;
     }
+    this.length++;
   }
 
-  reverse(head) {
-    // iteratively
-    // let prev = null;
-    //
-    // while(this.head) {
-    //   const next = this.head.next;
-    //   this.head.next = prev;
-    //   prev = this.head;
-    //   this.head = next;
-    // }
-    //
-    // return prev;
+  contains(value) {
+    let head = this.head;
+    while(head) {
+      if (head.value === value) {
+        return true;
+      }
+      head = head.next;
+    }
+    return false;
+  }
 
-    // recursively
+  get(index) {
+    if (index >= this.length) {
+      return 'index is out of bounds';
+    }
+    let head = this.head
+    for (let i = 0; i < index; i++) {
+      head = head.next;
+    }
+    return head;
+  }
+
+  add(value, index) {
+    if (index >= this.length) {
+      return 'index is out of bounds';
+    }
+    const node = new Node(value);
+    console.log(node);
+    if (index === 0) {
+      node.next = this.head;
+      this.head = node;
+    } else {
+      const prev = this.get(index - 1);
+      const next = prev.next;
+      node.next = next;
+      prev.next = node;
+    }
+    this.length++;
+  }
+
+  remove(index) {
+    if (index >= this.length) {
+      return 'index is out of bounds';
+    }
+    if (index === 0) {
+      this.head = this.head.next;
+    } else {
+      const prev = this.get(index - 1);
+      prev.next = prev.next.next;
+    }
+    this.length--;
+  }
+
+  reverse() {
+    let prev = null;
+    while(this.head) {
+      let next = this.head.next;
+      this.head.next = prev;
+      prev = this.head;
+      this.head = next;
+    }
+    return prev;
+  }
+
+  reverseRecursively(head) {
     if (!head || !head.next) {
       return head;
     }
-    const newHead = this.reverse(head.next);
+    const newHead = this.reverseRecursively(head.next);
     head.next.next = head;
     head.next = null;
     return newHead;
   }
 }
 
-const list = new LinkedList(1);
-list.append(2);
-list.append(3);
-// list.append(4);
-// list.append(5);
-
-// console.log(list);
+const list = new LinkedList();
+// list.add(1, 0);
+// list.append('start');
+// list.append(1);
+list.preppend(1);
+list.preppend(2);
 printThis(list);
-console.log('==========\n==========');
-printThis(list.reverse(list.head));

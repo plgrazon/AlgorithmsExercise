@@ -120,11 +120,3 @@ class LinkedList {
     return newHead;
   }
 }
-
-const list = new LinkedList();
-// list.add(1, 0);
-// list.append('start');
-// list.append(1);
-list.preppend(1);
-list.preppend(2);
-printThis(list);

@@ -34,11 +34,10 @@ class Tree {
     queue.push(this.root);
 
     while(queue.length > 0) {
-      let node = queue[0];
+      let node = queue.shift();
       callback(node);
 
       node.children.forEach(leaf => queue.push(leaf));
-      queue.shift();
     }
   }
 
@@ -58,15 +57,15 @@ class Tree {
   }
 }
 
-// const tree = new Tree('Chairman');
-// tree.add('CEO', 'Chairman');
-// tree.add('CTO', 'Chairman');
-// tree.add('CFO', 'Chairman');
-// tree.add('VP Operations', 'CEO');
-// tree.add('Salesman 1', 'VP Operations');
-// tree.add('Salesman 2', 'VP Operations');
-// tree.add('Salesman 3', 'VP Operations');
-// tree.add('VP Software', 'CTO');
-// tree.add('Engineer 1', 'VP Software');
-// tree.add('VP Accounting', 'CFO');
-// printThis(tree.traverseDF(node => console.log(node.value)));
+const tree = new Tree('Chairman');
+tree.add('CEO', 'Chairman');
+tree.add('CTO', 'Chairman');
+tree.add('CFO', 'Chairman');
+tree.add('VP Operations', 'CEO');
+tree.add('Salesman 1', 'VP Operations');
+tree.add('Salesman 2', 'VP Operations');
+tree.add('Salesman 3', 'VP Operations');
+tree.add('VP Software', 'CTO');
+tree.add('Engineer 1', 'VP Software');
+tree.add('VP Accounting', 'CFO');
+printThis(tree.traverseBF(node => console.log(node.value)));

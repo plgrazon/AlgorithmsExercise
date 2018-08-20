@@ -39,7 +39,7 @@ class LinkedList {
     } else {
       let curr = this.head;
       while(curr.next) {
-        head = curr.next;
+        curr = curr.next;
       }
       curr.next = node;
     }
@@ -73,7 +73,6 @@ class LinkedList {
       return 'index is out of bounds';
     }
     const node = new Node(value);
-    console.log(node);
     if (index === 0) {
       node.next = this.head;
       this.head = node;
@@ -120,3 +119,9 @@ class LinkedList {
     return newHead;
   }
 }
+
+const link = new LinkedList();
+link.append(1);
+link.append(2);
+link.append(3);
+printThis(link);

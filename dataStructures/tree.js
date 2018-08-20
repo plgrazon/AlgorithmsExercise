@@ -21,12 +21,25 @@ class Tree {
     }
   }
 
-  traverse(callback) {
+  traverseDF(callback) {
     const walk = node => {
-      callback(node);
       node.children.forEach(walk);
+      callback(node);
     }
     walk(this.root);
+  }
+
+  traverseBF(callback) {
+    const queue = [];
+    queue.push(this.root);
+
+    while(queue.length > 0) {
+      let node = queue[0];
+      callback(node);
+
+      node.children.forEach(leaf => queue.push(leaf));
+      queue.shift();
+    }
   }
 
   add(value, parentValue) {
@@ -37,10 +50,23 @@ class Tree {
       return;
     }
 
-    this.traverse(node => {
+    this.traverseDF(node => {
       if (node.value === parentValue) {
         node.children.push(newNode);
       }
     });
   }
 }
+
+// const tree = new Tree('Chairman');
+// tree.add('CEO', 'Chairman');
+// tree.add('CTO', 'Chairman');
+// tree.add('CFO', 'Chairman');
+// tree.add('VP Operations', 'CEO');
+// tree.add('Salesman 1', 'VP Operations');
+// tree.add('Salesman 2', 'VP Operations');
+// tree.add('Salesman 3', 'VP Operations');
+// tree.add('VP Software', 'CTO');
+// tree.add('Engineer 1', 'VP Software');
+// tree.add('VP Accounting', 'CFO');
+// printThis(tree.traverseDF(node => console.log(node.value)));

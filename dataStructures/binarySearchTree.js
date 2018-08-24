@@ -109,6 +109,22 @@ class BinarySearchTree {
     return recurse(this.root);
   }
 
+  validateTree(node) {
+    const isValid = (node, maxVal, minVal) => {
+      if (!node) {
+        return true;
+      }
+      if (node.val <= minVal || node.val >= maxVal) {
+        return false;
+      }
+      const isLeftValid = isValid(node.left, node.val, minVal);
+      const isRightValid = isValid(node.right, maxVal, node.val);
+
+      return isLeftValid && isRightValid;
+    }
+    return isValid(node, Infinity, -Infinity);
+  }
+
   depthFirstLog(callback) {
     const walk = node => {
       if (node !== null) {
@@ -151,23 +167,23 @@ bst.insertIteratively(9);
 bst.insertIteratively(10);
 bst.insertIteratively(11);
 // printThis(bst);
-console.log(bst.containsIteratively(14));
-console.log(bst.containsRecursively(14));
-printThis(bst.depthFirstLog(node =>
-  {
-    if (node) {
-      console.log(node.value);
-    }
-  })
-);
-printThis(bst.breadthFirstLog(node =>
-  {
-    if (node) {
-      console.log(node.value);
-    }
-  })
-);
-console.log('=====\n=====')
+// console.log(bst.containsIteratively(14));
+// console.log(bst.containsRecursively(14));
+// printThis(bst.depthFirstLog(node =>
+//   {
+//     if (node) {
+//       console.log(node.value);
+//     }
+//   })
+// );
+// printThis(bst.breadthFirstLog(node =>
+//   {
+//     if (node) {
+//       console.log(node.value);
+//     }
+//   })
+// );
+// console.log('=====\n=====')
 // bst.insertRecursively(5);
 // bst.insertRecursively(3);
 // bst.insertRecursively(2);
@@ -180,3 +196,53 @@ console.log('=====\n=====')
 // bst.insertRecursively(10);
 // bst.insertRecursively(7);
 // printThis(bst);
+const test = {
+  root: {
+    value: 10,
+    left: {
+      value: 5,
+      left: {
+        value: 4,
+        left: {
+          value: 3,
+          left: null,
+          right: {
+            value: 3.5,
+            left: null,
+            right: {
+              value: 6,
+              left: null,
+              right: null
+            },
+          }
+        },
+        right: null
+      },
+      right: null
+    },
+    right: {
+      value: 15,
+      left: null,
+      right: null
+    }
+  }
+}
+
+const validateTree = node => {
+  const isValid = (node, maxVal, minVal) => {
+    if (!node) {
+      return true;
+    }
+    if (node.value <= minVal || node.value >= maxVal) {
+      return false;
+    }
+    const isLeftValid = isValid(node.left, node.value, minVal);
+    const isRightValid = isValid(node.right, maxVal, node.value);
+
+    return isLeftValid && isRightValid;
+  }
+  return isValid(node, Infinity, -Infinity);
+}
+
+console.log(bst.validateTree(this.root));
+console.log(validateTree(test.root));

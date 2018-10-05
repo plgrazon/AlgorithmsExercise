@@ -61,9 +61,25 @@ class LinkedList {
     if (index >= this.length) {
       return 'index is out of bounds';
     }
-    let head = this.head
+    let head = this.head;
     for (let i = 0; i < index; i++) {
       head = head.next;
+    }
+    return head;
+  }
+
+  getAlternative(index) {
+    if (index < 0) {
+      return 'index is out of bounds';
+    }
+    let currentIdx = 0;
+    let head = this.head;
+    while(head) {
+      if (currentIdx === index) {
+        return head;
+      }
+      head = head.next;
+      currentIdx++;
     }
     return head;
   }

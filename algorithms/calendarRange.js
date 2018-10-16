@@ -24,6 +24,9 @@ const calendarRange = (meetingSchedules) => {
 }
 
 /*
+time complexity: O(log N)
+space complexity: O(n)
+
 input:
 [
   { startTime: 0,  endTime: 1 },

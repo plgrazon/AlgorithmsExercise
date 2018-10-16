@@ -12,3 +12,8 @@ const reverseString = (str) => {
   }
   return input.join('');
 }
+
+/*
+time complexity: O(n)
+space complexity: O(1)
+*/

@@ -6,38 +6,53 @@ const printThis = object => console.log(util.inspect(object, options));
 
 class TrieNode {
   constructor(word) {
-    this.word = word || null;
+    this.word = word || '';
     this.children = {};
     this.isWord = false;
   }
 }
 
 class Trie {
-  constructor(value) {
-    if (value) {
-      this.root = new TrieNode(value);
-    }
+  constructor() {
     this.root = new TrieNode('');
   }
 
   insert(wordInput) {
     let currNode = this.root;
-    let letter = wordInput.slice(0, 1);
-    let word = wordInput.slice(1);
 
-    let child;
+    for (let i = 0; i < wordInput.length; i++) {
+      let letter = wordInput[i];
+      // if double letter add the same TrieNode
+      let child = (currNode.children[letter] =
+        currNode.children[letter] || new TrieNode(letter));
 
-    while (letter.length) {
-      if (!currNode.children[letter]) {
-        child = new TrieNode(letter);
-        currNode.children[letter] = child;
-      } else {
-        child = currNode.children[letter];
-      }
       currNode = child;
-      letter = word.slice(0, 1);
-      word = word.slice(1);
     }
-    child.isWord = true;
+
+    currNode.isWord = true;
+  }
+
+  searchHelper(word) {
+    let curr = this.root;
+
+    for (let i = 0; i < word.length; i++) {
+      let letter = word[i];
+      curr = curr.children[letter];
+
+      if (!curr) {
+        return null;
+      }
+    }
+    return curr;
+  }
+
+  search(word) {
+    let result = this.searchHelper(word);
+
+    return (result && result.isWord) || false;
+  }
+
+  startsWith(word) {
+    return !!this.searchHelper(word);
   }
 }

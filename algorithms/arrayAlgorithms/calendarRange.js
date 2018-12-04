@@ -1,4 +1,4 @@
-const calendarRange = (meetingSchedules) => {
+const calendarRange = meetingSchedules => {
   // create a deep copy
   const meetingsCopy = JSON.parse(JSON.stringify(meetingSchedules));
 
@@ -14,14 +14,17 @@ const calendarRange = (meetingSchedules) => {
     let lastMeeting = mergedMeetings[mergedMeetings.length - 1];
 
     if (currentMeeting.startTime <= lastMeeting.endTime) {
-      lastMeeting.endTime = Math.max(currentMeeting.endTime, lastMeeting.endTime);
+      lastMeeting.endTime = Math.max(
+        currentMeeting.endTime,
+        lastMeeting.endTime
+      );
     } else {
       mergedMeetings.push(currentMeeting);
     }
   }
 
   return mergedMeetings;
-}
+};
 
 /*
 time complexity: O(log N)

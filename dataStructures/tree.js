@@ -1,10 +1,8 @@
 const util = require('util');
-const options = {depth: null, colors: true}
+const options = { depth: null, colors: true };
 
 // Use this function to print the output on node repl
-const printThis = (object) => console.log(
-  util.inspect(object, options)
-)
+const printThis = object => console.log(util.inspect(object, options));
 
 class Node {
   constructor(value) {
@@ -25,7 +23,7 @@ class Tree {
     const walk = node => {
       node.children.forEach(walk);
       callback(node);
-    }
+    };
     walk(this.root);
   }
 
@@ -33,7 +31,7 @@ class Tree {
     const queue = [];
     queue.push(this.root);
 
-    while(queue.length > 0) {
+    while (queue.length > 0) {
       let node = queue.shift();
       callback(node);
 

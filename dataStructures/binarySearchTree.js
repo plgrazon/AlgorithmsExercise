@@ -1,10 +1,8 @@
 const util = require('util');
-const options = {depth: null, colors: true}
+const options = { depth: null, colors: true };
 
 // Use this function to print the output on node repl
-const printThis = (object) => console.log(
-  util.inspect(object, options)
-)
+const printThis = object => console.log(util.inspect(object, options));
 
 class Node {
   constructor(value) {
@@ -29,13 +27,13 @@ class BinarySearchTree {
       return;
     }
     let curr = this.root;
-    while(true) {
+    while (true) {
       if (value < curr.value) {
         if (!curr.left) {
           curr.left = newNode;
           return;
         } else {
-          curr = curr.left
+          curr = curr.left;
         }
       } else if (value > curr.value) {
         if (!curr.right) {
@@ -71,7 +69,7 @@ class BinarySearchTree {
       } else {
         return;
       }
-    }
+    };
     recurse(root);
   }
 
@@ -80,7 +78,7 @@ class BinarySearchTree {
       return false;
     }
     let curr = this.root;
-    while(true) {
+    while (true) {
       if (target === curr.value) {
         return true;
       } else if (target < curr.value && curr.left) {
@@ -105,7 +103,7 @@ class BinarySearchTree {
       } else {
         return false;
       }
-    }
+    };
     return recurse(this.root);
   }
 
@@ -121,7 +119,7 @@ class BinarySearchTree {
       const isRightValid = isValid(node.right, maxVal, node.val);
 
       return isLeftValid && isRightValid;
-    }
+    };
     return isValid(node, Infinity, -Infinity);
   }
 
@@ -132,7 +130,7 @@ class BinarySearchTree {
         walk(node.right);
       }
       callback(node);
-    }
+    };
     walk(this.root);
   }
 
@@ -140,7 +138,7 @@ class BinarySearchTree {
     const queue = [];
     queue.push(this.root);
 
-    while(queue.length > 0) {
+    while (queue.length > 0) {
       let curr = queue.shift();
 
       callback(curr);
@@ -213,7 +211,7 @@ const test = {
               value: 6,
               left: null,
               right: null
-            },
+            }
           }
         },
         right: null
@@ -226,7 +224,7 @@ const test = {
       right: null
     }
   }
-}
+};
 
 const validateTree = node => {
   const isValid = (node, maxVal, minVal) => {
@@ -240,9 +238,9 @@ const validateTree = node => {
     const isRightValid = isValid(node.right, maxVal, node.value);
 
     return isLeftValid && isRightValid;
-  }
+  };
   return isValid(node, Infinity, -Infinity);
-}
+};
 
 console.log(bst.validateTree(this.root));
 console.log(validateTree(test.root));

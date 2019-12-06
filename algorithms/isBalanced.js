@@ -1,4 +1,4 @@
-const isBalanced = (str) => {
+const isBalanced = str => {
   const open = {
     '{': '}',
     '[': ']',
@@ -7,8 +7,8 @@ const isBalanced = (str) => {
   const closed = {
     '}': true,
     ']': true,
-    ')': true,
-  }
+    ')': true
+  };
   const stack = [];
 
   for (let char of str) {
@@ -22,7 +22,7 @@ const isBalanced = (str) => {
   }
 
   return stack.length === 0;
-}
+};
 
 console.log(isBalanced('()'));
 console.log(isBalanced('([{}])'));

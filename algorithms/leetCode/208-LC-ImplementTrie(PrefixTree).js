@@ -29,7 +29,7 @@ class TrieNode {
 }
 
 // Time: O(mn);
-// Space: O(nm);
+// Space: O(mn);
 // m = number of children
 // n = word length
 var Trie = function () {

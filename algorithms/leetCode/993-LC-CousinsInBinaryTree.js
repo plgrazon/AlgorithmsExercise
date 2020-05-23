@@ -77,8 +77,9 @@ var isCousins = function (root, x, y) {
           xyNodes.x = [depth, parent.val];
         } else if (parent.left.val === y) {
           xyNodes.y = [depth, parent.val];
+        } else {
+          queue.push(parent.left);
         }
-        queue.push(parent.left);
       }
 
       if (parent.right) {
@@ -86,8 +87,9 @@ var isCousins = function (root, x, y) {
           xyNodes.x = [depth, parent.val];
         } else if (parent.right.val === y) {
           xyNodes.y = [depth, parent.val];
+        } else {
+          queue.push(parent.right);
         }
-        queue.push(parent.right);
       }
 
       nodes--;

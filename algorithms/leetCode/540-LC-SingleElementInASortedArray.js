@@ -13,6 +13,12 @@
  *
  * Note: Your solution should run in O(log n) time and O(1) space.
  */
+// Time: O(n);
+// Space: O(1);
+const singleNonDuplicate = function (nums) {
+  return nums.reduce((acc, num) => acc ^ el);
+};
+
 // Time: O(logN);
 // Space: O(1);
 const singleNonDuplicate = function (nums) {

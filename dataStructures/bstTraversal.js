@@ -144,7 +144,7 @@ const postOrderIterativeReverse = (node) => {
 // Time: O(n^2);
 // Space: O(n);
 // Recursive:
-const postOrderIterativeRecursive = (root) => {
+const postOrderRecursive = (root) => {
   const nodeList = [];
 
   const dfs = (node) => {

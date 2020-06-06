@@ -63,8 +63,9 @@ Solution.prototype.pickIndex = function () {
  * Probability per weight: [1/6, 2/6, 3/6]
  * Probability in percent: [17%, 33%, 50%]
  *
+ * ▼-------indices--------▼
+ * | 0 |   1   |    2     |
  * ▼-weight of each index-▼
- * |-1-|---2---|----3-----|
  * |17%|  33%  |   50%    |
  * |___|_______|__________|
  * 0   1       3          6 <- This row represents the possible values for each
@@ -83,8 +84,9 @@ Solution.prototype.pickIndex = function () {
  * Probability per index: [1/8, 3/8, 4/8]
  * Probability in percent: [12.5%, 37.5%, 50%]
  *
+ * ▼-------indices--------▼
+ * | 0 |   1   |    2     |
  * ▼-weight of each index-▼
- * |-1-|---3---|----4-----|
  * |13%|  37%  |   50%    |
  * |___|_______|__________|
  * 0   1       4          8

@@ -22,6 +22,8 @@
  * It is guaranteed that costs.length is even.
  * 1 <= costs[i][0], costs[i][1] <= 1000
  */
+// Time O(log n);
+// Space O(1);
 const twoCitySchedCost = function (costs) {
   let sum = 0;
   let len = costs.length / 2;

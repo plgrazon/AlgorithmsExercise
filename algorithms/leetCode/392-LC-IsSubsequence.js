@@ -32,7 +32,11 @@ const isSubsequence = function (s, t) {
   let stringIdx = 0;
 
   while (stringIdx < t.length) {
-    if (s[subIndex] === t[stringIdx++]) subIndex++;
+    if (s[subIndex] === t[stringIdx++]) {
+      subIndex++;
+
+      if (subIndex === s.length) return true;
+    }
   }
 
   return subIndex === s.length;

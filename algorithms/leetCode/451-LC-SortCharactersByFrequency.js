@@ -34,6 +34,8 @@
  * "bbaA" is also a valid answer, but "Aabb" is incorrect.
  * Note that 'A' and 'a' are treated as two different characters.
  */
+// Time: O(3n) => O(n);
+// Space: O(2n) => O(n);
 const frequencySort = function (s) {
   let hashMap = [...s].reduce((map, char) => {
     if (map.has(char)) map.set(char, map.get(char) + 1);

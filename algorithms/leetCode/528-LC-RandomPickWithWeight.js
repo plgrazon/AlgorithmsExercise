@@ -52,6 +52,29 @@ Solution.prototype.pickIndex = function () {
   }
 };
 
+// Time: O(n);
+// Space: O(logn);
+Solution.prototype.pickIndex = function () {
+  const randomNumber = Math.random() * this.totalWeigth;
+  let floor = 0;
+  let ceiling = this.weights.length - 1;
+  let mid;
+
+  while (floor <= ceiling) {
+    mid = floor + Math.floor((ceiling - floor) / 2);
+
+    if (this.weights[mid] === randomNumber) {
+      return mid;
+    } else if (this.weights[mid] > randomNumber) {
+      ceiling = mid - 1;
+    } else {
+      floor = mid + 1;
+    }
+  }
+
+  return floor;
+};
+
 /**
  * Explanation:
  * Given an array of weights, we need to find the total/max weight for all of the

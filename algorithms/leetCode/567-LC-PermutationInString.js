@@ -72,10 +72,10 @@ var checkInclusion = function (s1, s2) {
   let endWindow = 0;
 
   while (endWindow < s2.length) {
-    let currStart = s2[endWindow];
+    let currEnd = s2[endWindow];
 
-    if (map.has(currStart)) map.set(currStart, map.get(currStart) - 1);
-    if (map.get(currStart) === 0) uniq--;
+    if (map.has(currEnd)) map.set(currEnd, map.get(currEnd) - 1);
+    if (map.get(currEnd) === 0) uniq--;
     if (uniq === 0) return true;
 
     while (endWindow - startWindow + 1 === s1.length) {

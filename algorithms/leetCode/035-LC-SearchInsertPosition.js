@@ -20,6 +20,8 @@
  * Input: [1,3,5,6], 0
  * Output: 0
  */
+// Time: O(n);
+// Space: O(1);
 const searchInsert = function (nums, target) {
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] >= target) {
@@ -29,6 +31,8 @@ const searchInsert = function (nums, target) {
   return nums.length;
 };
 
+// Time: O(logn);
+// Space: O(1);
 const searchInsertBinarySearch = function (nums, target) {
   if (nums[nums.length - 1] < target) return nums.length;
 

@@ -92,6 +92,8 @@ countValidPasswords(passwords);
  *
  * How many passwords are valid according to the new interpretation of the policies?
  */
+// Time: O(n);
+// Space: O(1);
 const countValidPasswordsTwo = (arr) => {
   let validPasswords = 0;
 

@@ -116,6 +116,8 @@ countTrees(3, 1);
  * What do you get if you multiply together the number of trees encountered
  * on each of the listed slopes?
  */
+// Time: O(2n) => O(n);
+// Space: O(1);
 const slopes = [
   { x: 1, y: 1 },
   { x: 3, y: 1 },

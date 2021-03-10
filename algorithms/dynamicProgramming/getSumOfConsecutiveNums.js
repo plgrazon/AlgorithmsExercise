@@ -6,7 +6,9 @@
  * f(n) = f(n - 1) + n
  */
 function getSum(num) {
-  if (num === 1) {
+  if (num === 0) {
+    return 0;
+  } else if (num === 1) {
     return 1;
   }
   return getSum(num - 1) + num;

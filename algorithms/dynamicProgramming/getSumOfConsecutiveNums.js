@@ -14,6 +14,8 @@ function getSum(num) {
 
 /**
  * Another way of solving it using an array
+ * The array length will always be n + 1. The reason behind this is
+ * that we always start with zero as the base case / start cache
  */
 function getSumArray(num) {
   const results = [0];

@@ -18,6 +18,7 @@
  */
 // Time: O(n)
 // Space: O(1)
+// top-down approach
 function climbStairsNthWays(n) {
   if (n === 0 || n === 1) {
     return 1;
@@ -28,6 +29,7 @@ function climbStairsNthWays(n) {
 
 // Time: O(n)
 // Space: O(n)
+// bottom-up approach
 function climbStairsNthWaysArray(n) {
   const results = [1, 1];
 

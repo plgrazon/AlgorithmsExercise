@@ -26,7 +26,7 @@ function getSumArray(num) {
     results[i] = results[i - 1] + i;
   }
 
-  return results;
+  return results[num];
 }
 
 let result = getSum(10);

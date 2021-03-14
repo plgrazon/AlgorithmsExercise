@@ -35,8 +35,27 @@ function getSumArray(num) {
   return results[num];
 }
 
+// In this example we optimize it further because we don't need to track
+// all numbers we only need the previous number and the result of it
+// Time: O(n)
+// Space: O(1)
+// bottom-up approach
+function getSumArrayOptimized(num) {
+  let previousNum = 0;
+  let result;
+
+  for (let i = 1; i <= num; i++) {
+    result = i + previousNum;
+    previousNum = result;
+  }
+
+  return result;
+}
+
 let result = getSum(10);
 let resultsArray = getSumArray(10);
+let resultsArrayOptimized = getSumArrayOptimized(10);
 
 console.log(result);
 console.log(resultsArray);
+console.log(resultsArrayOptimized);

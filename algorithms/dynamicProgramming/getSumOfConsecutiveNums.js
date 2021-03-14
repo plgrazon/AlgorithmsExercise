@@ -5,6 +5,9 @@
  * General idea:
  * f(n) = f(n - 1) + n
  */
+// Time: O(n)
+// Space: O(1)
+// top-down approach
 function getSum(num) {
   if (num === 0) {
     return 0;
@@ -19,6 +22,9 @@ function getSum(num) {
  * The array length will always be n + 1. The reason behind this is
  * that we always start with zero as the base case / start cache
  */
+// Time: O(n)
+// Space: O(n)
+// bottom-up approach
 function getSumArray(num) {
   const results = [0];
 

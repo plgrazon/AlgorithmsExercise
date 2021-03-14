@@ -19,22 +19,35 @@
 // Time: O(n)
 // Space: O(1)
 // top-down approach
-function climbStairsNthWays(n) {
+function climbStairs2Ways(n) {
   if (n === 0 || n === 1) {
     return 1;
   }
 
-  return climbStairsNthWays(n - 1) + climbStairsNthWays(n - 2);
+  return climbStairs2Ways(n - 1) + climbStairs2Ways(n - 2);
 }
 
 // Time: O(n)
 // Space: O(n)
 // bottom-up approach
-function climbStairsNthWaysArray(n) {
+function climbStairs2WaysArray(n) {
   const results = [1, 1];
 
   for (let i = 2; i <= n; i++) {
     results[i] = results[i - 1] + results[i - 2];
+  }
+
+  return results[n];
+}
+
+// Time: O(n)
+// Space: O(n)
+// bottom-up approach
+function climbStairs3WaysArray(n) {
+  const results = [1, 1, 2];
+
+  for (let i = 3; i <= n; i++) {
+    results[i] = results[i - 1] + results[i - 2] + [i - 3];
   }
 
   return results[n];
@@ -45,7 +58,7 @@ function climbStairsNthWaysArray(n) {
 // Time: O(n)
 // Space: O(1)
 // bottom-up approach
-function climbStairsNthWaysArrayOptimized(n) {
+function climbStairs2WaysArrayOptimized(n) {
   let oneStep = 1;
   let twoStep = 1;
   let result;
@@ -59,9 +72,9 @@ function climbStairsNthWaysArrayOptimized(n) {
   return result;
 }
 
-const steps = climbStairsNthWays(5); // 8
-const stepsArr = climbStairsNthWaysArray(5); // 8
-const stepsArrOptimized = climbStairsNthWaysArrayOptimized(5); // 8
+const steps = climbStairs2Ways(5); // 8
+const stepsArr = climbStairs2WaysArray(5); // 8
+const stepsArrOptimized = climbStairs2WaysArrayOptimized(5); // 8
 
 console.log(steps);
 console.log(stepsArr);

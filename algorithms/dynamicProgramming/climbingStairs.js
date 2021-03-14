@@ -16,7 +16,7 @@
  * 5. Where to look for the answer
  *   f(n)
  */
-// Time: O(n)
+// Time: O(2^n)
 // Space: O(1)
 // top-down approach
 function climbStairs2Ways(n) {

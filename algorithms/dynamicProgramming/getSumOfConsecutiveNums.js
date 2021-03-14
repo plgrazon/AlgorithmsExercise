@@ -5,7 +5,7 @@
  * General idea:
  * f(n) = f(n - 1) + n
  */
-// Time: O(n)
+// Time: O(2^n)
 // Space: O(1)
 // top-down approach
 function getSum(num) {

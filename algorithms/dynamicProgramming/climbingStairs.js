@@ -40,8 +40,29 @@ function climbStairsNthWaysArray(n) {
   return results[n];
 }
 
+// In this example we optimize it further because we don't need to track
+// all numbers we only need the last two numbers and the result of it
+// Time: O(n)
+// Space: O(1)
+// bottom-up approach
+function climbStairsNthWaysArrayOptimized(n) {
+  let oneStep = 1;
+  let twoStep = 1;
+  let result;
+
+  for (let i = 2; i <= n; i++) {
+    result = oneStep + twoStep;
+    oneStep = twoStep;
+    twoStep = result;
+  }
+
+  return result;
+}
+
 const steps = climbStairsNthWays(5); // 8
 const stepsArr = climbStairsNthWaysArray(5); // 8
+const stepsArrOptimized = climbStairsNthWaysArrayOptimized(5); // 8
 
 console.log(steps);
-console.log(steps);
+console.log(stepsArr);
+console.log(stepsArrOptimized);

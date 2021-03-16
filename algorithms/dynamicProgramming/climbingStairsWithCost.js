@@ -21,7 +21,9 @@
  * 5. Where to look for the answer
  *   f(n)
  */
-function minimizeStairCostRecursive(n, costs) {
+// Time: O(n);
+// Space: O(n);
+function minimizeStairCost(n, costs) {
   const hash = Array(n + 1).fill(0);
   hash[1] = costs[0];
 
@@ -33,11 +35,29 @@ function minimizeStairCostRecursive(n, costs) {
   return hash[n];
 }
 
+// Time: O(n)
+// Space: O(1)
+function minimizeStairCostOptimized(n, costs) {
+  let oneStep = costs[0];
+  let twoStep = 0;
+  let result;
+
+  for (let i = 2; i <= n; i++) {
+    result = getMin(oneStep, twoStep) + costs[i - 1];
+    oneStep = result;
+    twoStep = oneStep;
+  }
+
+  return result;
+}
+
 function getMin(a, b) {
   if (a < b) return a;
   else return b;
 }
 
-const example1 = minimizeStairCostRecursive(3, [3, 2, 4]);
+const example1 = minimizeStairCost(3, [3, 2, 4]);
+const example2 = minimizeStairCostOptimized(3, [3, 2, 4]);
 
 console.log(example1);
+console.log(example2);

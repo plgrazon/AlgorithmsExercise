@@ -40,9 +40,9 @@ function climbStairsNwaysArrayOptimized(n, k) {
   hash[1] = 1;
 
   for (let i = 2; i <= n; i++) {
-    // we don't need j <= k because we access the 0 element
-    // we can just use j < k
     for (let j = 1; j < k; j++) {
+      // we don't need j <= k because we access the 0 element
+      // we can just use j < k
       if (i - j < 0) continue;
       hash[i % k] += hash[(i - j) % k];
     }

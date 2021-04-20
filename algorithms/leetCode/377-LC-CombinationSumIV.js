@@ -39,7 +39,7 @@ const combinationSum4 = function (nums, target) {
 
   for (let i = 1; i <= target; i++) {
     for (let j = 0; j < nums.length; j++) {
-      if (i - nums[nums[j]] < 0) continue;
+      if (i - nums[j] < 0) continue;
       dp[i] += dp[i - nums[j]];
     }
   }

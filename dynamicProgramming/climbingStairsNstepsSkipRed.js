@@ -28,6 +28,7 @@ function climbStairsNstepsSkipRed(n, k, redSteps) {
     for (let j = 1; j < k; j++) {
       if (i - j < 0) continue;
       // i - 1 because the boolean array is indexed zero
+      // k is only 7 in this case but we iterate on the other loop 8 times
       if (redSteps[i - 1]) hash[i % k] = 0;
       else hash[i % k] += hash[(i - j) % k];
     }

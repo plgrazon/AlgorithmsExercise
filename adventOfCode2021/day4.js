@@ -73,12 +73,11 @@
  * first. What will your final score be if you choose that board?
  */
 const { draws, cards } = require('./day4Input');
-const drawnNumbers = [
-  7, 4, 9, 5, 11, 17, 23, 2, 0, 14, 21, 24,
-  // 10, 16, 13, 6, 15, 25, 12, 22, 18,
-  // 20, 8, 19, 3, 26, 1,
+const sampleDraws = [
+  7, 4, 9, 5, 11, 17, 23, 2, 0, 14, 21, 24, 10, 16, 13, 6, 15, 25, 12, 22, 18,
+  20, 8, 19, 3, 26, 1,
 ];
-const bingoCards = [
+const sampleCards = [
   [
     [22, 13, 17, 11, 0],
     [8, 2, 23, 4, 24],
@@ -158,26 +157,47 @@ const checkCardsForMatch = (num, cardsArray) => {
 
           if (isBingo) {
             let unMarkedSum = getUnmarkedSum(bingoCard);
-            console.log(unMarkedSum * Number(bingoCard[row][col]));
-            return bingoCard;
+            return unMarkedSum * Number(bingoCard[row][col]);
           }
         }
       }
     }
   }
-  return [];
+  return 0;
 };
 
-const solveBingo = (numsArray, cardsArray) => {
+const solveFirstBingo = (numsArray, cardsArray) => {
+  const cardsArrayCopy = cardsArray.slice();
+  const winningScores = [];
+
   for (let i = 0; i < numsArray.length; i++) {
     let currentNum = numsArray[i];
-    const winningCard = checkCardsForMatch(currentNum, cardsArray);
+    const winningCardScore = checkCardsForMatch(currentNum, cardsArrayCopy);
 
-    if (winningCard.length) {
-      return winningCard;
+    if (winningCardScore) {
+      winningScores.push(winningCardScore);
     }
   }
+  return winningScores;
 };
 
-const card = solveBingo(draws, cards);
-console.log(card);
+const firstBingo = solveFirstBingo(draws, cards);
+console.log(firstBingo);
+
+// const solveLastBingo = (numsArray, cardsArray) => {
+//   const winningCardsScores = [];
+
+//   for (let i = 0; i < numsArray.length; i++) {
+//     let currentNum = numsArray[i];
+//     const winningCardScore = checkCardsForMatch(currentNum, cardsArray);
+
+//     if (winningCardScore) {
+//       winningCardsScores.push(winningCardScore);
+//     }
+//   }
+//   console.log(winningCardsScores);
+//   return winningCardsScores[winningCardsScores.length - 1];
+// };
+
+// const lastBingo = solveLastBingo(draws, cards);
+// console.log(lastBingo);

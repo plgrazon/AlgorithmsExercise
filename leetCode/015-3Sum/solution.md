@@ -8,8 +8,9 @@ There are various ways to solve this problem.
 
 ### Brute Force
 
-This is very straight forward. We just need to make 3 nested for loops. This
-won't work on inputs that have duplicates.
+This is very straight forward. We just need to make 3 nested for loops. If there are duplicates the best way to approach this would be sorting the array first
+that way we can compare neighboring numbers. If the number has been visited
+before we just skip it.
 #### Code
 
 No Duplicates:
@@ -20,6 +21,39 @@ var threeSum = function(nums) {
   for (let i = 0; i < nums.length - 2; i++) {
     for (let j = i + 1; j < nums.length; j++) {
       for (let k = j + 1; k < nums.length; k++) {      
+        let sum = nums[i] + nums[j] + nums[k];
+        if (sum === 0) {
+          result.push([nums[i], nums[j], nums[k]]);
+        }
+      }
+    }
+  }
+  
+  return result;
+};
+```
+
+With Duplicates:
+```javascript
+var threeSum = function(nums) {
+  nums.sort((a, b) => a - b);
+  const result = [];
+  
+  for (let i = 0; i < nums.length - 2; i++) {
+    if (i > 0 && nums[i] === nums[i - 1]) {
+      continue;
+    }
+    
+    for (let j = i + 1; j < nums.length; j++) {
+      if (j > i + 1 && nums[j] === nums[j - 1]) {
+        continue;
+      }
+      
+      for (let k = j + 1; k < nums.length; k++) {
+        if (k > j + 1 && nums[k] === nums[k - 1]) {
+          continue;
+        }
+        
         let sum = nums[i] + nums[j] + nums[k];
         if (sum === 0) {
           result.push([nums[i], nums[j], nums[k]]);

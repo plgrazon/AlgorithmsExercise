@@ -114,6 +114,40 @@ result = [[-2, 2]];
 
 #### Code
 
+No Duplicates
+```javascript
+var threeSum = function(nums) {
+  nums.sort((a, b) => a - b);
+  const result = [];
+  
+  for (let i = 0; i < nums.length; i++) {
+    let currNum = nums[i];
+    
+    // two sum
+    let left = i + 1;
+    let right = nums.length - 1;
+    while (left < right) {
+      let leftNum = nums[left];
+      let rightNum = nums[right];
+      let threeSum = currNum + leftNum + rightNum;
+      
+      if (threeSum > 0) {
+        right--;
+      } else if (threeSum < 0) {
+        left++;
+      } else {
+        result.push([currNum, leftNum, rightNum]);
+        left++;
+        right--;
+      }
+    }
+  }
+  
+  return result;
+}
+```
+
+With Duplicates
 ```javascript
 var threeSum = function(nums) {
   nums.sort((a, b) => a - b);

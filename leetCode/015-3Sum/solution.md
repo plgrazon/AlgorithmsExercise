@@ -8,11 +8,29 @@ There are various ways to solve this problem.
 
 ### Brute Force
 
-This is very straight forward. We just need to make 3 for loops. One edge case
-is if there are duplicate numbers. If there are duplicate numbers the best way
-to approach this would be sorting the numbers and on the main / outer loop, we
-would be skipping if the currentNumber is the same as the previous number. If no
-duplicates we can skip sorting.
+This is very straight forward. We just need to make 3 nested for loops. This
+won't work on inputs that have duplicates.
+#### Code
+
+No Duplicates:
+```javascript
+var threeSum = function(nums) {
+  const result = [];
+  
+  for (let i = 0; i < nums.length - 2; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      for (let k = j + 1; k < nums.length; k++) {      
+        let sum = nums[i] + nums[j] + nums[k];
+        if (sum === 0) {
+          result.push([nums[i], nums[j], nums[k]]);
+        }
+      }
+    }
+  }
+  
+  return result;
+};
+```
 
 ### For loop and Two Sum Pointer
 
@@ -60,6 +78,55 @@ result = [[-2, 2]]
 result = [[-2, 2]];
 ```
 
+#### Code
+
+```javascript
+var threeSum = function(nums) {
+  nums.sort((a, b) => a - b);
+  const result = [];
+  
+  for (let i = 0; i < nums.length; i++) {
+    let currNum = nums[i];
+    
+    if (i > 0 && currNum === nums[i - 1]) {
+      continue;
+    }
+    
+    // two sum
+    let left = i + 1;
+    let right = nums.length - 1;
+    while (left < right) {
+      let leftNum = nums[left];
+      let rightNum = nums[right];
+      let threeSum = currNum + leftNum + rightNum;
+      
+      if (threeSum > 0) {
+        right--;
+      } else if (threeSum < 0) {
+        left++;
+      } else {
+        result.push([currNum, leftNum, rightNum]);
+        left++;
+        right--;
+        while (leftNum === nums[left] && left < right) {
+          left++;
+        }
+      }
+    }
+  }
+  
+  return result;
+}
+```
+
 ### For loop and Two Sum Hash Table
 
-Didn't try this yet
+The idea is we would be using a hash table to keep track of the difference. On
+the outher loop we would get the difference between the first num and target. On
+the next inner loop we would be using this difference again to subtract the
+second number. This newer difference would be then stored in the hashtable if
+not yet found. If found we just found our triplet, firstnum, secondnum, and third
+num. If the difference is not found on the table, we would be storing the second
+num in the hash table. This would only work if there are no duplicates.
+
+Haven't tried with duplicates.

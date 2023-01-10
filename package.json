@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/plgrazon/AlgorithmsExercise#readme",
   "dependencies": {
-    "live-server": "^1.2.0",
+    "live-server": "^1.2.2",
     "nodemon": "^1.18.3"
   }
 }
